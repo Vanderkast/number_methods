@@ -16,20 +16,13 @@ y_f = [f_x(i) for i in x_f]
 
 
 xs = lib.np.linspace(a, b, n)
-print("params: {}".format(xs))
 ys = [f_x(i) for i in xs]
-print("values {}".format(ys))
-print("keks: {}".format(lib.div_diff(xs, ys, 0)))
 
 diffs = [lib.div_diff(xs, ys, i) for i in range(n)]
-print("diffs {}".format(diffs))
 y_formula = [lib.interpolated_f(xs, diffs, x) for x in xs]
-print(y_formula)
 
 inductive_diffs = lib.div_diff_matrix(xs, ys)[0]
-print("inductive diffs {}".format(inductive_diffs))
 y_inductive = [lib.interpolated_f(xs, inductive_diffs, x) for x in xs]
-print("inductive y values: {}".format(y_inductive))
 
 mpl.plot(x_f, y_f, linewidth=2)
 mpl.plot(xs, y_formula, linewidth=1.7)
